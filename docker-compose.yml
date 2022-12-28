@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  nginx-load-balancer:
+    build: ./nginx-load-balancer
+    ports:
+      - "3000:80"
+    depends_on:
+      - app1
+      - app2
+  app1:
+    build: ./app
+    ports:
+      - "3001:3000"
+  app2:
+    build: ./app
+    ports:
+      - "3002:3000"
